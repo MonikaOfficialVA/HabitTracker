@@ -1,10 +1,15 @@
-/* GENERAL STYLING */
+/* BODY */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    transition: 0.3s;
     background-color: #ffe6f0; /* light pink */
-    color: #000;
+    color: #000; /* black text in light mode */
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: flex-start; /* align top */
+    min-height: 100vh;
+    transition: 0.3s;
+    padding-top: 40px; /* leave space for top hamburger */
 }
 
 /* SIDEBAR */
@@ -19,6 +24,7 @@ body {
     transition: 0.3s;
     padding-top: 60px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
 .sidebar h2 {
@@ -35,6 +41,92 @@ body {
     border-bottom: 1px solid #ccc;
     color: #000;
 }
+
+/* MAIN CONTENT CENTERED */
+.main {
+    transition: margin-left 0.3s;
+    width: 600px; /* fixed width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HAMBURGER BUTTON */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+}
+
+/* CARDS */
+.card {
+    background-color: #fff0f5;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%; /* cards take full main width */
+}
+
+/* INPUTS */
+input {
+    width: 95%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTONS */
+button {
+    padding: 10px 16px;
+    margin: 5px;
+    border: none;
+    background-color: #ff4da6;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e60073;
+}
+
+/* DARK MODE */
+body.dark {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark .card {
+    background-color: #1e1e1e;
+}
+
+body.dark input {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+body.dark button {
+    background-color: #666;
+}
+
+body.dark button:hover {
+    background-color: #888;
+}
+
+body.dark .sidebar {
+    background-color: #2c2c2c;
+}
+
+body.dark .sidebar li {
+    color: #fff;
+    border-bottom: 1px solid #555;
+}}
 
 /* MAIN CONTENT */
 .main {
