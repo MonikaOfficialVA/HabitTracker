@@ -1,12 +1,14 @@
+/* GENERAL BODY */
 body {
-    font-family: Arial;
-    background-color: #ffe6f0;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    transition: 0.3s;
     margin: 0;
+    transition: 0.3s;
+    background-color: #ffe6f0; /* light pink mode */
+    color: #000; /* black text in light mode */
 }
 
 /* TOP RIGHT BUTTON */
@@ -18,9 +20,9 @@ body {
     font-size: 14px;
 }
 
-/* BIGGER CONTAINER */
+/* CONTAINER */
 .container {
-    width: 600px; /* increased size */
+    width: 600px;
     text-align: center;
 }
 
@@ -30,8 +32,9 @@ h1 {
     margin-bottom: 10px;
 }
 
+/* CARD */
 .card {
-    background: white;
+    background-color: #fff0f5; /* very light pink card */
     padding: 25px;
     margin: 15px 0;
     border-radius: 14px;
@@ -39,6 +42,7 @@ h1 {
     transition: 0.3s;
 }
 
+/* INPUTS */
 input {
     width: 95%;
     padding: 14px;
@@ -48,6 +52,7 @@ input {
     font-size: 15px;
 }
 
+/* BUTTONS */
 button {
     padding: 12px 16px;
     border: none;
@@ -63,14 +68,16 @@ button:hover {
     background-color: #e60073;
 }
 
+/* HABIT LIST */
 li {
     list-style: none;
     padding: 18px;
     margin: 10px 0;
-    background: #f9f9f9;
+    background: #fff5f8; /* very light pink for list items */
     border-radius: 10px;
     text-align: left;
     font-size: 16px;
+    color: #000; /* black text in light mode */
 }
 
 .completed {
@@ -78,72 +85,10 @@ li {
     color: gray;
 }
 
-.actions {
-    margin-top: 10px;
-}
-
 /* DARK MODE */
-.dark-mode {
-    background-color: #1e1e1e;
-    color: white;
-}
-
-.dark-mode .card {
-    background: #2c2c2c;
-}
-
-.dark-mode input {
-    background: #444;
-    color: white;
-    border: 1px solid #666;
-}
-
-.dark-mode li {
-    background: #3a3a3a;
-}
-
-.dark-mode button {
-    background-color: #666;
-}
-
-.dark-mode button:hover {
-    background-color: #888;
-}
-
-/* Default Light Mode */
-body {
-    background-color: #f0f0f0;
-    color: #333;
-    font-family: Arial, sans-serif;
-}
-
-.card {
-    background-color: #fff;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Light Mode (Light Pink) */
-body {
-    background-color: #ffe6f0; /* soft light pink */
-    color: #333;
-    font-family: Arial, sans-serif;
-}
-
-.card {
-    background-color: #fff0f5; /* very light pink card */
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Dark Mode */
 body.dark {
     background-color: #121212;
-    color: #f0f0f0;
+    color: #fff; /* white text in dark mode */
 }
 
 body.dark .card {
@@ -151,15 +96,22 @@ body.dark .card {
     box-shadow: 0 2px 5px rgba(255,255,255,0.05);
 }
 
-/* Buttons */
-button {
-    padding: 5px 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+body.dark input {
+    background: #444;
+    color: #fff; /* white text for inputs */
+    border: 1px solid #666;
 }
 
-button:hover {
-    opacity: 0.9;
+body.dark li {
+    background: #3a3a3a;
+    color: #fff; /* white text for list items */
+}
+
+body.dark button {
+    background-color: #666;
+    color: #fff; /* white text for buttons */
+}
+
+body.dark button:hover {
+    background-color: #888;
 }
