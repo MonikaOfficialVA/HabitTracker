@@ -127,3 +127,82 @@ body.dark .sidebar li {
     color: #fff;
     border-bottom: 1px solid #555;
 }
+
+/* Center Habit Tracker title */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #ff4da6;
+    margin-bottom: 20px;
+}
+
+/* Dark mode button at top-right */
+.theme-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #ff4da6;
+    color: white;
+    z-index: 1000;
+}
+
+.theme-btn:hover {
+    background-color: #e60073;
+}
+
+/* Body & Main layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;  /* center horizontally */
+    align-items: flex-start;  /* start from top */
+    min-height: 100vh;
+    background-color: #ffe6f0; /* light pink */
+    color: #000; /* black text in light mode */
+    padding-top: 60px; /* leave space for top button */
+    transition: 0.3s;
+}
+
+/* Cards centered */
+.main, .container {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Card styles */
+.card {
+    width: 100%;
+    background-color: #fff0f5;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+/* Dark mode */
+body.dark {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark .card {
+    background-color: #1e1e1e;
+}
+
+body.dark .theme-btn {
+    background-color: #666;
+    color: #fff;
+}
+
+body.dark .theme-btn:hover {
+    background-color: #888;
+}
