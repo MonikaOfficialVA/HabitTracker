@@ -1,51 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Habit Tracker</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="container">
+    <h1>Habit Tracker</h1>
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-btn">🌙 Dark Mode</button>
 
-<!-- Hamburger Menu -->
-<div id="sidebar" class="sidebar">
-    <h2>Completed Habits</h2>
-    <ul id="completedList"></ul>
-</div>
+    <!-- Add Habit Card -->
+    <div class="card">
+        <input type="text" id="habitName" placeholder="Habit name">
+        <input type="text" id="habitDesc" placeholder="Description">
+        <input type="date" id="habitStartDate" placeholder="Start date">
+        <input type="number" id="habitDaysGoal" placeholder="Goal duration (days)">
+        <button onclick="addHabit()">Add Habit</button>
+    </div>
 
-<!-- Main Content -->
-<div class="main">
-    <!-- Hamburger button -->
-    <span id="hamburger" class="hamburger">☰</span>
+    <!-- Habit List Card -->
+    <div class="card">
+        <ul id="habitList"></ul>
+    </div>
 
-    <div class="container">
-        <h1>Habit Tracker</h1>
-
-        <!-- Theme Toggle -->
-        <button id="themeToggle">🌙 Dark Mode</button>
-
-        <!-- Add Habit -->
-        <div class="card">
-            <input type="text" id="habitName" placeholder="Habit name">
-            <input type="text" id="habitDesc" placeholder="Description">
-            <input type="date" id="habitStartDate" placeholder="Start date">
-            <input type="number" id="habitDaysGoal" placeholder="Goal duration (days)">
-            <button onclick="addHabit()">Add Habit</button>
-        </div>
-
-        <!-- Habit List -->
-        <div class="card">
-            <ul id="habitList"></ul>
-        </div>
-
-        <!-- Summary -->
-        <div class="card">
-            <p>Total Completed: <span id="completedCount">0</span></p>
-            <p>Longest Streak: <span id="streakCount">0</span></p>
-        </div>
+    <!-- Summary Card -->
+    <div class="card">
+        <p>Total Completed: <span id="completedCount">0</span></p>
+        <p>Longest Streak: <span id="streakCount">0</span></p>
     </div>
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>
