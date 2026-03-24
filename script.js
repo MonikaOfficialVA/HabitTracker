@@ -1,19 +1,17 @@
-// script.js
-
-// Get elements
 const habitList = document.getElementById('habitList');
+const completedList = document.getElementById('completedList');
 const completedCountEl = document.getElementById('completedCount');
 const streakCountEl = document.getElementById('streakCount');
 
 let habits = [];
 
-// Load habits from localStorage if any
+// Load habits
 if (localStorage.getItem('habits')) {
     habits = JSON.parse(localStorage.getItem('habits'));
     renderHabits();
 }
 
-// Function to add a new habit
+// ADD HABIT
 function addHabit() {
     const name = document.getElementById('habitName').value.trim();
     const desc = document.getElementById('habitDesc').value.trim();
@@ -47,51 +45,48 @@ function addHabit() {
     document.getElementById('habitDaysGoal').value = '';
 }
 
-// Mark a habit day as completed
+// COMPLETE HABIT
 function completeHabit(id) {
     const habit = habits.find(h => h.id === id);
     const today = new Date().toISOString().split('T')[0];
 
     if (habit.lastCompletedDate === today) {
-        alert("You've already completed this habit today!");
+        alert("Already completed today!");
         return;
     }
 
     habit.completedDays += 1;
 
-    // Update streak
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().split('T')[0];
 
-    if (habit.lastCompletedDate === yesterdayStr) {
-        habit.streak += 1;
-    } else {
-        habit.streak = 1;
-    }
-
+    habit.streak = (habit.lastCompletedDate === yesterdayStr) ? habit.streak + 1 : 1;
     habit.lastCompletedDate = today;
+
     saveHabits();
     renderHabits();
 }
 
-// Remove a habit
+// REMOVE HABIT
 function removeHabit(id) {
-    if (confirm('Are you sure you want to remove this habit?')) {
+    if (confirm('Remove this habit?')) {
         habits = habits.filter(h => h.id !== id);
         saveHabits();
         renderHabits();
     }
 }
 
-// Save habits to localStorage
+// SAVE
 function saveHabits() {
     localStorage.setItem('habits', JSON.stringify(habits));
 }
 
-// Render the habit list
+// RENDER
 function renderHabits() {
     habitList.innerHTML = '';
+    completedList.innerHTML = '';
+
     let totalCompleted = 0;
     let maxStreak = 0;
 
@@ -101,22 +96,54 @@ function renderHabits() {
 
         const li = document.createElement('li');
         li.innerHTML = `
-            <strong>${habit.name}</strong> - Started on: ${habit.startDate} - Goal: ${habit.daysGoal} days<br>
+            <strong>${habit.name}</strong> - Started: ${habit.startDate} - Goal: ${habit.daysGoal} days<br>
             ${habit.desc ? habit.desc + '<br>' : ''}
-            Completed Days: ${habit.completedDays} - Current Streak: ${habit.streak} 
+            Completed Days: ${habit.completedDays} - Current Streak: ${habit.streak}
             <button onclick="completeHabit(${habit.id})">✅ Mark Today</button>
             <button onclick="removeHabit(${habit.id})">🗑️ Remove</button>
         `;
         habitList.appendChild(li);
+
+        // Add to completed list if completedDays >= goal
+        if (habit.completedDays >= habit.daysGoal) {
+            const cLi = document.createElement('li');
+            cLi.textContent = habit.name;
+            completedList.appendChild(cLi);
+        }
     });
 
     completedCountEl.textContent = totalCompleted;
     streakCountEl.textContent = maxStreak;
 }
 
-// Theme toggle
+// HAMBURGER MENU
+const sidebar = document.getElementById('sidebar');
+const hamburger = document.getElementById('hamburger');
+
+hamburger.addEventListener('click', () => {
+    if (sidebar.style.width === '250px') {
+        sidebar.style.width = '0';
+        document.querySelector('.main').style.marginLeft = '0';
+    } else {
+        sidebar.style.width = '250px';
+        document.querySelector('.main').style.marginLeft = '250px';
+    }
+});
+
+// THEME TOGGLE
 const themeToggle = document.getElementById('themeToggle');
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    themeToggle.textContent = '☀️ Light Mode';
+}
+
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    themeToggle.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    if (document.body.classList.contains('dark')) {
+        themeToggle.textContent = '☀️ Light Mode';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.textContent = '🌙 Dark Mode';
+        localStorage.setItem('theme', 'light');
+    }
 });
