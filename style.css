@@ -1,10 +1,15 @@
-/* GENERAL STYLING */
+/* BODY */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    transition: 0.3s;
     background-color: #ffe6f0; /* light pink */
-    color: #000;
+    color: #000; /* black text in light mode */
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: flex-start; /* align top */
+    min-height: 100vh;
+    transition: 0.3s;
+    padding-top: 40px; /* leave space for top hamburger */
 }
 
 /* SIDEBAR */
@@ -19,6 +24,7 @@ body {
     transition: 0.3s;
     padding-top: 60px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    z-index: 1000;
 }
 
 .sidebar h2 {
@@ -36,21 +42,23 @@ body {
     color: #000;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT CENTERED */
 .main {
-    margin-left: 0;
     transition: margin-left 0.3s;
-    padding: 20px;
+    width: 600px; /* fixed width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Hamburger Button */
+/* HAMBURGER BUTTON */
 .hamburger {
     font-size: 30px;
     cursor: pointer;
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000;
+    z-index: 1100;
 }
 
 /* CARDS */
@@ -60,6 +68,7 @@ body {
     margin: 15px 0;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%; /* cards take full main width */
 }
 
 /* INPUTS */
